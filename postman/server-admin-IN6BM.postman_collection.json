@@ -1,0 +1,283 @@
+{
+  "info": {
+    "_postman_id": "72cbb656-35e8-4bc4-90a5-c7122c123576",
+    "name": "server-admin-IN6BM",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32787282"
+  },
+  "item": [
+    {
+      "name": "Fields Management Copy",
+      "item": [
+        {
+          "name": "Get All Fields",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Field Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/{{fieldId}}",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                "{{fieldId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Field",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.json().field) {",
+                  "    pm.environment.set('fieldId', pm.response.json().field._id);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTlZTajZtVG5BS0NKIiwianRpIjoiZGIwMjY2NjYtMjQ3OC00ZTBlLWE0YTgtYTIzYzA2ZWZhYmU1IiwiaWF0IjoxNzcxMjUyMDU3LCJyb2xlIjoiQURNSU5fUk9MRSIsImV4cCI6MTc3MTI1Mzg1NywiaXNzIjoiQXV0aFNlcnZpY2UiLCJhdWQiOiJBdXRoU2VydmljZSJ9.a2Q60lY3Z92Q1HPqHwUljhqougrO4Qp2sQdfXmhHlLM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fieldName",
+                  "value": "Cancha de Fútbol B",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Cancha de fútbol 5 urbano",
+                  "type": "text"
+                },
+                {
+                  "key": "capacity",
+                  "value": "FUTBOL_7",
+                  "type": "text"
+                },
+                {
+                  "key": "pricePerHour",
+                  "value": "150",
+                  "type": "text"
+                },
+                {
+                  "key": "fieldType",
+                  "value": "SINTETICA",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/create",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Field",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTlZTajZtVG5BS0NKIiwianRpIjoiZGIwMjY2NjYtMjQ3OC00ZTBlLWE0YTgtYTIzYzA2ZWZhYmU1IiwiaWF0IjoxNzcxMjUyMDU3LCJyb2xlIjoiQURNSU5fUk9MRSIsImV4cCI6MTc3MTI1Mzg1NywiaXNzIjoiQXV0aFNlcnZpY2UiLCJhdWQiOiJBdXRoU2VydmljZSJ9.a2Q60lY3Z92Q1HPqHwUljhqougrO4Qp2sQdfXmhHlLM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fieldName",
+                  "value": "Cancha-C-New",
+                  "type": "text"
+                },
+                {
+                  "key": "fieldType",
+                  "value": "SINTETICA",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "6d394452-56df-4748-9597-21896bececa2",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/{{fieldId}}",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                "{{fieldId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate Field",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTlZTajZtVG5BS0NKIiwianRpIjoiZGIwMjY2NjYtMjQ3OC00ZTBlLWE0YTgtYTIzYzA2ZWZhYmU1IiwiaWF0IjoxNzcxMjUyMDU3LCJyb2xlIjoiQURNSU5fUk9MRSIsImV4cCI6MTc3MTI1Mzg1NywiaXNzIjoiQXV0aFNlcnZpY2UiLCJhdWQiOiJBdXRoU2VydmljZSJ9.a2Q60lY3Z92Q1HPqHwUljhqougrO4Qp2sQdfXmhHlLM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/{{fieldId}}/deactivate",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                "{{fieldId}}",
+                "deactivate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activate Field",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTlZTajZtVG5BS0NKIiwianRpIjoiZGIwMjY2NjYtMjQ3OC00ZTBlLWE0YTgtYTIzYzA2ZWZhYmU1IiwiaWF0IjoxNzcxMjUyMDU3LCJyb2xlIjoiQURNSU5fUk9MRSIsImV4cCI6MTc3MTI1Mzg1NywiaXNzIjoiQXV0aFNlcnZpY2UiLCJhdWQiOiJBdXRoU2VydmljZSJ9.a2Q60lY3Z92Q1HPqHwUljhqougrO4Qp2sQdfXmhHlLM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{adminServerUrl}}/kinalSportsAdmin/v1/fields/{{fieldId}}/activate",
+              "host": [
+                "{{adminServerUrl}}"
+              ],
+              "path": [
+                "kinalSportsAdmin",
+                "v1",
+                "fields",
+                "{{fieldId}}",
+                "activate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
